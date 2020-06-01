@@ -36,11 +36,29 @@ class ParseXml(APIView):
 class PagePagination(PageNumberPagination):
     page_size = 50
 
+
 class ItemList(ListAPIView):
-    queryset = models.Item.objects.all()
     serializer_class = serializers.ItemSerializer
     paginate_by = 10
     paginate_by_param = 'page_size'
     max_paginate_by = 100
     pagination_class = PagePagination
+
+    def get_queryset(self):
+        data = self.request.data
+        serializer = serializers.FilterSerializer(data=data)
+        if serializer.is_valid():
+            return models.Item.objects.filter(**serializer.validated_data)
+
+    def post(self, request, *args, **kwargs):
+        return self.list(request, args, kwargs)
+
+
+class CurrentItem(mixins.RetrieveModelMixin, GenericAPIView):
+    queryset = models.Item.objects.all()
+    serializer_class = serializers.ItemSerializer
+
+    def get(self, request, *args, **kwargs):
+        return self.retrieve(request, args, kwargs)
+
 
