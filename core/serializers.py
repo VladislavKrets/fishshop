@@ -17,6 +17,7 @@ class ItemSerializer(ModelSerializer):
 
 class FilterSerializer(Serializer):
     topic_id__in = serializers.ListField(child=serializers.IntegerField(), required=False)
+    pk__in = serializers.ListField(child=serializers.IntegerField(), required=False)
     name__icontains = serializers.CharField(required=False)
 
     class Meta:
