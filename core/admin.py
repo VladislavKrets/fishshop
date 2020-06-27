@@ -18,11 +18,22 @@ class TopicForm(ModelForm):
            self.fields['parent_id'] = ChoiceField(
                choices=self.topic_choices, label='Parent name')
 
+
 class TopicAdmin(admin.ModelAdmin):
+    search_fields = ['name', ]
     form = TopicForm
 
 
+class ItemAdmin(admin.ModelAdmin):
+    search_fields = ['name', ]
+    list_filter = [
+        ('is_promotion', admin.BooleanFieldListFilter),
+        ('is_bestseller', admin.BooleanFieldListFilter),
+        ('topic', admin.RelatedFieldListFilter)
+    ]
+
+
 admin.site.register(Topic, TopicAdmin)
-admin.site.register(Item)
+admin.site.register(Item, ItemAdmin)
 
 # Register your models here.

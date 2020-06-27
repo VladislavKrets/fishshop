@@ -62,3 +62,19 @@ class CurrentItem(mixins.RetrieveModelMixin, GenericAPIView):
         return self.retrieve(request, args, kwargs)
 
 
+class BestsellerItem(mixins.ListModelMixin, GenericAPIView):
+    queryset = models.Item.objects.filter(is_bestseller=True)
+    serializer_class = serializers.ItemSerializer
+
+    def get(self, request, *args, **kwargs):
+        return self.list(self, request, args, kwargs)
+
+
+class PromotionItem(mixins.ListModelMixin, GenericAPIView):
+    queryset = models.Item.objects.filter(is_promotion=True)
+    serializer_class = serializers.ItemSerializer
+
+    def get(self, request, *args, **kwargs):
+        return self.list(request, args, kwargs)
+
+
