@@ -20,12 +20,16 @@ class Item(models.Model):
     photo = models.ImageField(upload_to='images', null=True, verbose_name='Photo', blank=True)
     is_promotion = models.BooleanField(default=False, verbose_name='Promotion')
     is_bestseller = models.BooleanField(default=False, verbose_name='Bestseller')
+    unit = models.CharField(default=None, null=True, max_length=50)
+    description = models.TextField(null=True, blank=True)
 
     def save(self, *args, **kwargs):
         if not self.price:
             self.price = None
         if not self.photo:
             self.photo = None
+        if not self.description:
+            self.description = None
         super(Item, self).save(*args, **kwargs)
 
     def __str__(self):
