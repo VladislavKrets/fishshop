@@ -10,6 +10,17 @@ class Topic(models.Model):
         return 'Topic: ' + self.name
 
 
+class Property(models.Model):
+    str_id = models.CharField(max_length=500, verbose_name='1c id')
+    name = models.CharField(max_length=500, verbose_name='Name')
+
+
+class ItemPropertyValue(models.Model):
+    str_id = models.CharField(max_length=500, verbose_name='1c id', null=True, blank=True)
+    property_value = models.CharField(max_length=500, verbose_name='Property value')
+    property = models.ForeignKey(to=Property, on_delete=models.deletion.CASCADE, related_name='item_properties')
+
+
 class Item(models.Model):
     str_id = models.CharField(max_length=500, verbose_name='1c id')
     name = models.CharField(max_length=500, verbose_name='Name')
@@ -22,6 +33,7 @@ class Item(models.Model):
     is_bestseller = models.BooleanField(default=False, verbose_name='Bestseller')
     unit = models.CharField(default=None, null=True, max_length=50)
     description = models.TextField(null=True, blank=True)
+    properties = models.ManyToManyField(to=ItemPropertyValue, related_name='item_properties')
 
     def save(self, *args, **kwargs):
         if not self.price:
