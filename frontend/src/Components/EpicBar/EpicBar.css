@@ -1,0 +1,29 @@
+.view-epicbar{
+    position: fixed;
+    display: none;
+    justify-content: space-between;
+    background-color: cornflowerblue;
+    z-index: 999;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+.view-epicbar img{
+    height: 28px;
+    filter: invert(0.15);
+}
+
+.view-epicbar .current{
+    filter: invert(0);
+}
+.view-epicbar a {
+    padding: 10px 20px;
+}
+
+@media (max-width: 500px) {
+    .view-epicbar{
+        display: flex;
+    }
+}

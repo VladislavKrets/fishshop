@@ -1,0 +1,5 @@
+@media (max-width: 500px){
+    html, body, #root, .view, .current-product-view-item{
+        height: 100%;
+    }
+}

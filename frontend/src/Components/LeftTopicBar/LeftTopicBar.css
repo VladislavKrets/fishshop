@@ -1,0 +1,17 @@
+.view-left-topic-bar{
+    background-color: cornflowerblue;
+    width: 300px;
+    min-width: 300px;
+    margin-left: 10px;
+    padding: 12px;
+    margin-top: 45px;
+    min-height: 550px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    border-radius: 3px,
+}
+@media (max-width: 500px) {
+    .view-left-topic-bar {
+        display: none;
+    }
+
+}

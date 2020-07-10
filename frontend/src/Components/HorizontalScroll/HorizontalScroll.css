@@ -1,0 +1,46 @@
+.view-horizontal{
+    margin: 40px auto;
+    width: 70%;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    background-color: white;
+    border-radius: 3px;
+}
+.view-horizontal-title{
+    padding: 4px 10px;
+    color: cornflowerblue;
+    font-family: 'Balsamiq Sans', cursive, 'Arial';
+    font-weight: bold;
+    font-size: 1.2em;
+}
+.view-horizontal-scroll{
+    overflow-x: scroll;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+}
+
+.view-horizontal-scroll::-webkit-scrollbar {
+    height: 3px;
+}
+
+/* Track */
+.view-horizontal-scroll::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+.view-horizontal-scroll::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+.view-horizontal-scroll::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+@media (max-width: 500px) {
+    .view-horizontal{
+        width: 95%;
+    }
+}

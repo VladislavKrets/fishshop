@@ -1,0 +1,23 @@
+.view-header{
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    justify-content: center;
+    padding: 15px 0;
+    box-sizing: border-box;
+    width: 100%;
+    background-color: cornflowerblue;
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+    font-family: 'Balsamiq Sans', cursive, 'Arial';
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    z-index: 1;
+}
+
+@media (max-width: 500px){
+    .view-header{
+        display: flex;
+    }
+}

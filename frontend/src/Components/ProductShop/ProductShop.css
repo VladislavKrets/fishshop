@@ -1,0 +1,16 @@
+.product-shop-list{
+    display: inline-flex;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    justify-content: space-between;
+}
+.mobile-search-categories{
+    display: none;
+    align-items: center;
+    padding: 5px;
+}
+@media (max-width: 500px)  {
+    .mobile-search-categories{
+        display: flex;
+    }
+}

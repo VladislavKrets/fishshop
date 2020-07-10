@@ -1,0 +1,19 @@
+.topic-bar-list{
+    background-color: cornflowerblue;
+    transform-origin: top;
+    left: 0;
+    top: 30px;
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    transform: scaleY(0);
+    visibility: hidden;
+    transition: transform 500ms, opacity 500ms, visibility 500ms;
+}
+.expanded-topic-bar-item{
+    position: static;
+    opacity: 1;
+    transform: scaleY(1);
+    visibility: visible;
+
+}
