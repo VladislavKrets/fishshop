@@ -35,7 +35,7 @@ export default class Basket extends React.Component {
         this.setState({
             loading: true
         })
-        axios.post(url ? url : '/items/', {pk__in: items}, {
+        return axios.post(url ? url : '/items/', {pk__in: items}, {
             headers: {},
         }).then(data => {
             const page = !data.data.previous ? 1 :
@@ -82,11 +82,15 @@ export default class Basket extends React.Component {
         if (id !== null) {
             window.history.pushState({}, 'product', `/products/${id}/`)
         }
+        this.loadData()
         this.setState({
             currentId: id
         })
     }
-
+    getItemCount = (elem) => {
+        const curr = this.props.selectedItems.filter(x => x.id === elem.id)[0]
+        return curr ? curr.count : null
+    }
     render() {
         let totalSum = 0;
         if (this.state.items.length > 0)
@@ -96,6 +100,7 @@ export default class Basket extends React.Component {
                     totalSum += price * x.count;
                 }
             })
+
         return (
             !this.state.currentId ? <View current={'basket'} title={'Корзина'}>
                     {this.state.loading ? <Spinner/> :
@@ -176,8 +181,8 @@ export default class Basket extends React.Component {
                                                                         border: 'none',
                                                                         width: '100%'
                                                                     }}
-                                                                           value={this.props.selectedItems.filter(x => x.id === elem.id)[0].count}
-                                                                           type={'text'}/></div>
+                                                                      value={this.getItemCount(elem)}
+                                                                      type={'text'}/></div>
                                                                 <div style={{
                                                                     padding: '5px 10px',
                                                                     backgroundColor: 'cornflowerblue',
@@ -234,11 +239,11 @@ export default class Basket extends React.Component {
                                                     : "не указана"}
                                                     </div>
                                                     <div>
-                                                        <b>Количество: </b> {this.props.selectedItems.filter(x => x.id === elem.id)[0].count}
+                                                        <b>Количество: </b> {this.getItemCount(elem)}
                                                     </div>
                                                     <div>
                                                         <b>Сумма: </b> {elem.price ?
-                                                        elem.price * this.props.selectedItems.filter(x => x.id === elem.id)[0].count + " руб."
+                                                        elem.price * this.getItemCount(elem) + " руб."
                                                         : "не указана"}
                                                     </div>
                                                 </div>
