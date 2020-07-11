@@ -267,7 +267,7 @@ export default class Basket extends React.Component {
                                     }}>
                                 <span
                                     onClick={this.state.previous ? () => {
-                                        this.loadData(null, this.state.previous.replace('http://', 'https://'))
+                                        this.loadData(null, this.props.getProtocolUrl(this.state.previous))
                                     } : null}
                                     style={{
                                         fontSize: '2em',
@@ -282,7 +282,7 @@ export default class Basket extends React.Component {
                                 </span>
                                         <span
                                             onClick={this.state.next ? () => {
-                                                this.loadData(null, this.state.next.replace('http://', 'https://'))
+                                                this.loadData(null, this.props.getProtocolUrl(this.state.next))
                                             } : null}
                                             style={{
                                                 fontSize: '2em',
